@@ -1,0 +1,20 @@
+name: KeyAll
+version: 1.0.0
+main: hu.syntrixsmp.keyall.KeyAllPlugin
+api-version: "1.21"
+description: Oránkénti kulcs kiosztás minden online játékosnak
+authors: [SyntrixSMP]
+
+depend:
+  - PlaceholderAPI
+
+commands:
+  keyall:
+    description: KeyAll kezelő parancs
+    usage: /keyall [stop|now|help]
+    permission: keyall.admin
+
+permissions:
+  keyall.admin:
+    description: KeyAll admin jogosultság
+    default: op

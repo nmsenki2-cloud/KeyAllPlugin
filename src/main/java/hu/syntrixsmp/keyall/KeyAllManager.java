@@ -18,6 +18,15 @@ public class KeyAllManager {
         this.plugin = plugin;
     }
 
+    // Automatikus indítás szerver bootkor - broadcast nélkül
+    public void autoStart() {
+        if (active) return;
+        active = true;
+        secondsRemaining = plugin.getConfig().getInt("interval", 3600);
+        startTimer();
+        plugin.getLogger().info("[KeyAll] Automatikusan elindult! Következő kulcs: 1 óra múlva.");
+    }
+
     public void start() {
         if (active) return;
         active = true;
@@ -49,14 +58,12 @@ public class KeyAllManager {
             if (!active) return;
 
             if (secondsRemaining <= 0) {
-                // Kulcs kiosztása
                 broadcast(plugin.getConfig().getString("messages.broadcast-key",
                         "&6&l[KeyAll] &eMindenki kapott egy kulcsot!"));
                 giveKeys();
                 secondsRemaining = plugin.getConfig().getInt("interval", 3600);
             }
 
-            // Visszaszámláló frissítése
             int h = secondsRemaining / 3600;
             int m = (secondsRemaining % 3600) / 60;
             int s = secondsRemaining % 60;
@@ -64,7 +71,7 @@ public class KeyAllManager {
 
             secondsRemaining--;
 
-        }, 0L, 20L); // 20 tick = 1 másodperc
+        }, 0L, 20L);
     }
 
     private void giveKeys() {

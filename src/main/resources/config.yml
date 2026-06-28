@@ -1,10 +1,8 @@
 # KeyAll Plugin konfiguráció
 # Az intervallum másodpercben (3600 = 1 óra)
 interval: 3600
-
-# A crate kulcs típusa (/pcrate giveKey <type> <player> 1)
-key-type: example1
-
+# A crate kulcs típusa (/excellentcrates key give <player> <type>)
+key-type: common_kulcs
 # Üzenetek
 messages:
   broadcast-key: "&6&l[KeyAll] &eMindenki kapott egy &6Common &elada kulcsot! &a✔"
